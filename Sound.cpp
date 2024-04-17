@@ -10,21 +10,32 @@
 #include "../inc/DAC5.h"
 #include "../inc/Timer.h"
 
+const static uint8_t* sound2play;
+static uint32_t soundCount;
+static uint32_t I;
 
 void SysTick_IntArm(uint32_t period, uint32_t priority){
-  // write this
+    SysTick->CTRL = 0;         // disable SysTick during setup
+    SysTick->LOAD = period-1;  // reload value
+    SysTick->VAL = 0;          // any write to current clears it
+    SCB->SHP[1] = SCB->SHP[1]&(~0xC0000000)|(priority << 29); // set priority
 }
 // initialize a 11kHz SysTick, however no sound should be started
 // initialize any global variables
 // Initialize the 5 bit DAC
 void Sound_Init(void){
-// write this
-  
+    // 80M/7256 = 11.025kHz
+    SysTick_IntArm(7256, 2);
+    DAC5_Init();
 }
 extern "C" void SysTick_Handler(void);
 void SysTick_Handler(void){ // called at 11 kHz
   // output one value to DAC if a sound is active
-   
+      DAC5_Out(sound2play[I]); // output one
+      I++;
+      if(I >= soundCount) {
+          SysTick->CTRL = 0;  // disable SysTick
+      }
 }
 
 //******* Sound_Start ************
@@ -38,20 +49,20 @@ void SysTick_Handler(void){ // called at 11 kHz
 // Output: none
 // special cases: as you wish to implement
 void Sound_Start(const uint8_t *pt, uint32_t count){
-// write this
+    sound2play = pt;
+    soundCount = count;
+    I = 0;
+    SysTick->CTRL = 0x0007;    // enable SysTick with core clock and interrupts
   
 }
 void Sound_Shoot(void){
-// write this
-  
+    Sound_Start(shoot, 4080);
 }
 void Sound_Killed(void){
-// write this
-  
+    Sound_Start(invaderkilled, 3377);
 }
 void Sound_Explosion(void){
-// write this
-  
+    Sound_Start(explosion, 2000);
 }
 
 void Sound_Fastinvader1(void){

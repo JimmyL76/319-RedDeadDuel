@@ -8,11 +8,11 @@
 #include "../inc/LaunchPad.h"
 // LaunchPad.h defines all the indices into the PINCM table
 void Switch_Init(void){
-    // write this
-  
+    IOMUX->SECCFG.PINCM[PA17INDEX] = 0X00040081; // GPIO input
+    IOMUX->SECCFG.PINCM[PB16INDEX] = 0X00040081;
 }
 // return current state of switches
+// PA17 (SW1) is bit 0, PB16 (SW2) is bit 1
 uint32_t Switch_In(void){
-    // write this
-  return 0; //replace this your code
+    return (((GPIOB->DIN31_0&0x00010000)>>15) | ((GPIOA->DIN31_0&0x00020000)>>17));
 }
