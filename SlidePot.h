@@ -9,6 +9,7 @@
 #define SLIDEPOT_H
 #define ADCVREF_VDDA 0x000
 #include <stdint.h>
+#include "../ECE319K_Lab9H/Player.h"
 
 class SlidePot{ private:
   uint32_t data;     // raw ADC value
@@ -20,7 +21,8 @@ class SlidePot{ private:
 public:
   SlidePot(uint32_t m, uint32_t b); // initialize slide pot
   void Init(ADC12_Regs *adc12,uint32_t channel1,uint32_t channel2, uint32_t reference);                  // initialize ADC1
-  void In(ADC12_Regs *adc12,int32_t *d1, int32_t *d2);                // return last ADC sample value (0 to 4095)
+  void In(ADC12_Regs *adc12,uint32_t *d1, uint32_t *d2);                // return last ADC sample value (0 to 4095)
+  void Move(Player* player, uint32_t data); // Moves players according to data from In
   void Save(uint32_t n);            // save ADC, set semaphore
   void Sync(void);                  // wait for semaphore
   uint32_t Convert(uint32_t n);     // convert ADC raw sample to fixed-point distance, 0.001cm

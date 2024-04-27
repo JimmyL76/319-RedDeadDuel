@@ -13,6 +13,6 @@ void Switch_Init(void);
 
 // return current state of switches
 uint32_t Switch_In(void);
-
+uint32_t Switch_In2(void);
 
 #endif /* SWITCH_H_ */

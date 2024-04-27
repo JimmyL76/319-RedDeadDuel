@@ -6,6 +6,7 @@
 #include <ti/devices/msp/msp.h>
 #include "../inc/Clock.h"
 #include "../inc/SlidePot.h"
+#include "../ECE319K_Lab9H/Player.h"
 #define ADCVREF_VDDA 0x000
 #define ADCVREF_INT  0x200
 
@@ -114,7 +115,7 @@ void SlidePot::Init(ADC12_Regs *adc12,uint32_t channel1,uint32_t channel2, uint3
 
 // Sensor.In(ADC0, &y1, &y2);
 // sample 12-bit ADC
-void SlidePot::In(ADC12_Regs *adc12,int32_t *d1, int32_t *d2){
+void SlidePot::In(ADC12_Regs *adc12,uint32_t *d1, uint32_t *d2){
   adc12->ULLMEM.CTL0 |= 0x00000001; // enable conversions
   adc12->ULLMEM.CTL1 |= 0x00000100; // start ADC
   uint32_t volatile delay=adc12->ULLMEM.STATUS; // time to let ADC start
@@ -122,6 +123,53 @@ void SlidePot::In(ADC12_Regs *adc12,int32_t *d1, int32_t *d2){
   *d1 = adc12->ULLMEM.MEMRES[1];
   *d2 = adc12->ULLMEM.MEMRES[2];
 }
+
+void SlidePot::Move(Player* player, uint32_t data){
+    if(data >= 0 && data < 682){
+        if(player->slowed){
+            player->MoveDown(1);
+        }
+        else{
+            player->MoveDown(4);
+        }
+    } else if(data >= 682 && data < 1365){
+        if(player->slowed){
+            player->MoveDown(1);
+        }
+        else{
+            player->MoveDown(3);
+        }
+    } else if(data >= 1365 && data < 1900){
+        if(player->slowed){
+            player->MoveDown(1);
+        }
+        else{
+            player->MoveDown(2);
+        }
+    } else if(data >= 2200 && data < 2730){
+        if(player->slowed){
+            player->MoveUp(1);
+        }
+        else{
+            player->MoveUp(2);
+        }
+    } else if(data >= 2730 && data < 3412){
+        if(player->slowed){
+            player->MoveUp(1);
+        }
+        else{
+            player->MoveUp(3);
+        }
+    } else if(data >= 3412 && data < 4096){
+        if(player->slowed){
+            player->MoveUp(1);
+        }
+        else{
+            player->MoveUp(3);
+        }
+    }
+}
+
 
 // Position = (1597*Data)>>12 + 119
 // Position = 0.3900*Data + 119.2696
@@ -145,8 +193,8 @@ void SlidePot::Save(uint32_t n){
   Flag = 1;
 }
 uint32_t SlidePot::Convert(uint32_t n){
-	// write this
-	// convert ADC raw sample n to fixed-point distance, 0.001cm
+    // write this
+    // convert ADC raw sample n to fixed-point distance, 0.001cm
     return ((1597*n)>>12) + 119;
     // return (n * 1000) / 4095; // ADC goes to 2cm, 2*1000 = 2000
 }

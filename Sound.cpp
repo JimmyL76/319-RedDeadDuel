@@ -25,7 +25,7 @@ void SysTick_IntArm(uint32_t period, uint32_t priority){
 // Initialize the 5 bit DAC
 void Sound_Init(void){
     // 80M/7256 = 11.025kHz
-    SysTick_IntArm(7256, 2);
+    SysTick_IntArm(7256, 1);
     DAC5_Init();
 }
 extern "C" void SysTick_Handler(void);
@@ -56,27 +56,13 @@ void Sound_Start(const uint8_t *pt, uint32_t count){
   
 }
 void Sound_Shoot(void){
-    Sound_Start(shoot, 4080);
-}
-void Sound_Killed(void){
-    Sound_Start(invaderkilled, 3377);
-}
-void Sound_Explosion(void){
-    Sound_Start(explosion, 2000);
+    Sound_Start(Shoot, 2282);
 }
 
-void Sound_Fastinvader1(void){
-  
+void Sound_Hit(void){
+    Sound_Start(hit, 2195);
 }
-void Sound_Fastinvader2(void){
-  
-}
-void Sound_Fastinvader3(void){
-  
-}
-void Sound_Fastinvader4(void){
-  
-}
-void Sound_Highpitch(void){
-  
+
+void Sound_Powerup(void){
+    Sound_Start(healthboost, 2098);
 }
