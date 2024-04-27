@@ -6,19 +6,20 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/Clock.cpp \
-F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/DAC5.cpp \
+C:/Users/pisto/OneDrive\ -\ The\ University\ of\ Texas\ at\ Austin/00\ -\ UT\ Austin/0\ -\ School/ECE\ 319H/MSPM0_ValvanoWare/inc/Clock.cpp \
+C:/Users/pisto/OneDrive\ -\ The\ University\ of\ Texas\ at\ Austin/00\ -\ UT\ Austin/0\ -\ School/ECE\ 319H/MSPM0_ValvanoWare/inc/DAC5.cpp \
 ../LED.cpp \
 ../Lab9HMain.cpp \
-F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/LaunchPad.cpp \
-F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/SPI.cpp \
-F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/ST7735.cpp \
-F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/SlidePot.cpp \
+C:/Users/pisto/OneDrive\ -\ The\ University\ of\ Texas\ at\ Austin/00\ -\ UT\ Austin/0\ -\ School/ECE\ 319H/MSPM0_ValvanoWare/inc/LaunchPad.cpp \
+../Player.cpp \
+C:/Users/pisto/OneDrive\ -\ The\ University\ of\ Texas\ at\ Austin/00\ -\ UT\ Austin/0\ -\ School/ECE\ 319H/MSPM0_ValvanoWare/inc/SPI.cpp \
+C:/Users/pisto/OneDrive\ -\ The\ University\ of\ Texas\ at\ Austin/00\ -\ UT\ Austin/0\ -\ School/ECE\ 319H/MSPM0_ValvanoWare/inc/ST7735.cpp \
+C:/Users/pisto/OneDrive\ -\ The\ University\ of\ Texas\ at\ Austin/00\ -\ UT\ Austin/0\ -\ School/ECE\ 319H/MSPM0_ValvanoWare/inc/SlidePot.cpp \
 ../SmallFont.cpp \
 ../Sound.cpp \
 ../Switch.cpp \
-F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/TExaS.cpp \
-F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/Timer.cpp 
+C:/Users/pisto/OneDrive\ -\ The\ University\ of\ Texas\ at\ Austin/00\ -\ UT\ Austin/0\ -\ School/ECE\ 319H/MSPM0_ValvanoWare/inc/TExaS.cpp \
+C:/Users/pisto/OneDrive\ -\ The\ University\ of\ Texas\ at\ Austin/00\ -\ UT\ Austin/0\ -\ School/ECE\ 319H/MSPM0_ValvanoWare/inc/Timer.cpp 
 
 CMD_SRCS += \
 ../mspm0g3507.cmd 
@@ -29,6 +30,7 @@ OBJS += \
 ./LED.o \
 ./Lab9HMain.o \
 ./LaunchPad.o \
+./Player.o \
 ./SPI.o \
 ./ST7735.o \
 ./SlidePot.o \
@@ -44,6 +46,7 @@ CPP_DEPS += \
 ./LED.d \
 ./Lab9HMain.d \
 ./LaunchPad.d \
+./Player.d \
 ./SPI.d \
 ./ST7735.d \
 ./SlidePot.d \
@@ -59,6 +62,7 @@ OBJS__QUOTED += \
 "LED.o" \
 "Lab9HMain.o" \
 "LaunchPad.o" \
+"Player.o" \
 "SPI.o" \
 "ST7735.o" \
 "SlidePot.o" \
@@ -74,6 +78,7 @@ CPP_DEPS__QUOTED += \
 "LED.d" \
 "Lab9HMain.d" \
 "LaunchPad.d" \
+"Player.d" \
 "SPI.d" \
 "ST7735.d" \
 "SlidePot.d" \
@@ -84,18 +89,19 @@ CPP_DEPS__QUOTED += \
 "Timer.d" 
 
 CPP_SRCS__QUOTED += \
-"F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/Clock.cpp" \
-"F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/DAC5.cpp" \
+"C:/Users/pisto/OneDrive - The University of Texas at Austin/00 - UT Austin/0 - School/ECE 319H/MSPM0_ValvanoWare/inc/Clock.cpp" \
+"C:/Users/pisto/OneDrive - The University of Texas at Austin/00 - UT Austin/0 - School/ECE 319H/MSPM0_ValvanoWare/inc/DAC5.cpp" \
 "../LED.cpp" \
 "../Lab9HMain.cpp" \
-"F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/LaunchPad.cpp" \
-"F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/SPI.cpp" \
-"F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/ST7735.cpp" \
-"F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/SlidePot.cpp" \
+"C:/Users/pisto/OneDrive - The University of Texas at Austin/00 - UT Austin/0 - School/ECE 319H/MSPM0_ValvanoWare/inc/LaunchPad.cpp" \
+"../Player.cpp" \
+"C:/Users/pisto/OneDrive - The University of Texas at Austin/00 - UT Austin/0 - School/ECE 319H/MSPM0_ValvanoWare/inc/SPI.cpp" \
+"C:/Users/pisto/OneDrive - The University of Texas at Austin/00 - UT Austin/0 - School/ECE 319H/MSPM0_ValvanoWare/inc/ST7735.cpp" \
+"C:/Users/pisto/OneDrive - The University of Texas at Austin/00 - UT Austin/0 - School/ECE 319H/MSPM0_ValvanoWare/inc/SlidePot.cpp" \
 "../SmallFont.cpp" \
 "../Sound.cpp" \
 "../Switch.cpp" \
-"F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/TExaS.cpp" \
-"F:/Dropbox/TIteachingProject/MSPM0_ValvanoWare/inc/Timer.cpp" 
+"C:/Users/pisto/OneDrive - The University of Texas at Austin/00 - UT Austin/0 - School/ECE 319H/MSPM0_ValvanoWare/inc/TExaS.cpp" \
+"C:/Users/pisto/OneDrive - The University of Texas at Austin/00 - UT Austin/0 - School/ECE 319H/MSPM0_ValvanoWare/inc/Timer.cpp" 
 
 
